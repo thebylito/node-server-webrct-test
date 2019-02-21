@@ -3,15 +3,15 @@ var app = express();
 var fs = require('fs');
 var open = require('open');
 var options = {
-  key: fs.readFileSync('server.key'),
-  cert: fs.readFileSync('server.crt')
+  key: fs.readFileSync('localhost.key'),
+  cert: fs.readFileSync('localhost.crt')
 };
 var serverPort = process.env.PORT || 4443;
-//var https = require('https');
+var https = require('https');
 var http = require('http');
 var server;
-//server = https.createServer(options, app);
-server = http.createServer(app);
+server = https.createServer(options, app);
+//server = http.createServer(app);
 /* if (process.env.LOCAL) {
 } else {
 /* } */
